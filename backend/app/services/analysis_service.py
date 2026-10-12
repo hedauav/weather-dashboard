@@ -1,7 +1,7 @@
 import hashlib
 import json
 import logging
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from typing import Dict, Any, List
 from app.config import settings
 from app.schemas import (
@@ -183,7 +183,7 @@ class AnalysisService:
         )
 
         analysis_id = f"anl_{cache_key[:12]}"
-        created_at_str = datetime.utcnow().isoformat()
+        created_at_str = datetime.now(timezone.utc).isoformat()
 
         response_obj = AnalysisResponse(
             analysis_id=analysis_id,
@@ -213,7 +213,7 @@ class AnalysisService:
 
         # 9. Save to Analysis Cache (TTL 7 days)
         cache_doc = response_obj.model_dump(mode="json")
-        cache_doc["expires_at"] = datetime.utcnow().timestamp() + settings.CACHE_TTL_SECONDS
+        cache_doc["expires_at"] = datetime.now(timezone.utc).timestamp() + settings.CACHE_TTL_SECONDS
         await db_manager.save_cached_analysis(cache_doc)
 
         return response_obj

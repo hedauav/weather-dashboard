@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from typing import List, Dict, Any, Tuple
 from collections import Counter
 from app.config import settings
@@ -134,7 +134,7 @@ class DataQualityService:
                 "imputation_method": imputation_method,
                 "quality_flags": rec["quality_flags"],
                 "is_missing_date": rec["is_missing_date"],
-                "fetched_at": datetime.utcnow().isoformat()
+                "fetched_at": datetime.now(timezone.utc).isoformat()
             })
 
         # Step 4: Quality & Coverage Summary
