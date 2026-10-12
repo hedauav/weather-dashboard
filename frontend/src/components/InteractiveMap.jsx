@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, Rectangle } from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Rectangle } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { MapPin } from 'lucide-react';
@@ -37,6 +37,7 @@ export default function InteractiveMap({ region, threshold, eventCount }) {
 
       <div style={{ height: '240px', width: '100%', borderRadius: 'var(--radius-md)', overflow: 'hidden' }}>
         <MapContainer
+          key={`${lat}-${lon}`}
           center={[lat, lon]}
           zoom={region.region_type === 'custom_bbox' ? 6 : 8}
           scrollWheelZoom={false}
