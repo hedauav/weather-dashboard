@@ -20,6 +20,7 @@ export async function resolveRegion(payload) {
 }
 
 export async function runHazardAnalysis(payload) {
+  console.log('[Climate API] Sending REAL fetch request to backend:', `${API_BASE}/analysis`, payload);
   const res = await fetch(`${API_BASE}/analysis`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

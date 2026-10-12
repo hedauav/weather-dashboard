@@ -22,6 +22,7 @@ PRESET_CITIES = {
     "kolkata": {"lat": 22.5726, "lon": 88.3639, "name": "Kolkata, India"},
     "phoenix": {"lat": 33.4484, "lon": -112.0740, "name": "Phoenix, USA"},
     "madrid": {"lat": 40.4168, "lon": -3.7038, "name": "Madrid, Spain"},
+    "nagpur": {"lat": 21.1458, "lon": 79.0882, "name": "Nagpur, India"},
 }
 
 PRESET_STATES = {
